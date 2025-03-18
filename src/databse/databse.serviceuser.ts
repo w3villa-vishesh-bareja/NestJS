@@ -6,8 +6,8 @@ export class DatabaseUserService implements OnModuleInit {
     constructor(private readonly databaseService: DatabaseService) {}
 
     async onModuleInit() {
-        const connection = this.databaseService.getPool();
-        const pool = await connection.getConnection();
+        const pool = this.databaseService.getPool();
+        // const pool = await connection.getConnection();
 
         try {
             await pool.query('USE nest')
@@ -30,7 +30,7 @@ export class DatabaseUserService implements OnModuleInit {
         } catch (err) {
             console.error("Error checking/creating users table:", err);
         } finally {
-            pool.release();
+            // pool.release();
         }
     }
-}
+} 
